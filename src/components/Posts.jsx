@@ -15,9 +15,11 @@ useEffect(()=>{
     <div className="box">{`This is your Posts stop`}
     {
       posts.length ? posts.map((post)=>{
-        return <div>{post.title}</div>
+        return //key goes here in another div
+          <div>{post.title}</div>
       }) : <div> Loading your Posts</div>
     }</div>
+
 
   )
 }

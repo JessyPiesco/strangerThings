@@ -33,7 +33,7 @@ const Main = () => {
   return (
     <div id="main">
 <Navbar/>
-{/* <Login userName={userName} setUserName={setUserName}/> */}
+<Login />
 <Posts/>
   </div>
   );
