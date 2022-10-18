@@ -28,9 +28,12 @@ body {
 #loggingIn{
   display: flex;
   justify-content: center;
-  padding: 25%;
+  padding: 5%;
   font-size: 30px;
   flex-direction: column;
   align-items: center;
+}
 
+input{
+  margin: 5px;
 }

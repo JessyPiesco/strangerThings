@@ -7,7 +7,7 @@ const Navbar = () => {
       <div id="navStuff">
         <div className="home">Home </div>
         <div className="posts"> Posts</div>
-        <div className="login"> LogIN</div>
+        <div className="login"> Login</div>
     </div></div>
   );
 };

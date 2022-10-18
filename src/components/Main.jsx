@@ -10,7 +10,8 @@ import {Login} from "."
 
 
 const Main = () => {
-  const [userName, setUserName]= useState("");
+  const [userPosts, setUserPosts]= useState("");
+  const [userName, setUserName]= useState("")
   useEffect(()=> {
     async function information(){
       try{
