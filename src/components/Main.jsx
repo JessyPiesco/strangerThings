@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import {Navbar} from "."
 import {Login} from "."
+import {Posts} from "."
 
 
 const Main = () => {
@@ -32,7 +33,8 @@ const Main = () => {
   return (
     <div id="main">
 <Navbar/>
-<Login userName={userName} setUserName={setUserName}/>
+{/* <Login userName={userName} setUserName={setUserName}/> */}
+<Posts/>
   </div>
   );
 };
