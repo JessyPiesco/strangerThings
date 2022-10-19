@@ -2,13 +2,15 @@ import react from "react";
 import { loginUser } from "./api-adapter";
 import Register from "./Register";
 import { NavLink } from "react-router-dom";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const Login = (props) => {
-     async function handleSubmit(event) {
+    const navigate = useNavigate()
+ 
+    async function handleSubmit(event) {
         event.preventDefault()
         const username = event.target[0].value
         const password = event.target[1].value
@@ -17,8 +19,9 @@ const Login = (props) => {
         console.log("log", logingUser)
         console.log("here", token)
         localStorage.removeItem('token')
-        localStorage.setItem('token', token)
-        (<Navigate to="/posts" replace={true} />)
+        localStorage.setItem('token', token);
+        navigate('/home')
+        // <Navigate onSubmit={handlesSubmit} to="home" replace={true} />
     }
 function newUser(){
   return <Register/>
@@ -32,8 +35,8 @@ return(
         <input type="text"  placeholder="UserName" className="username" />
         <input type="password" placeholder="Password" className="username"/>
         <button type="submit" className="button"> SUBMIT </button>
-
     </form>
+
     <NavLink to="register" > New User </NavLink>
 </div>
 )

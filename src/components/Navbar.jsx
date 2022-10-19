@@ -21,6 +21,6 @@ const Navbar = () => {
       </div>
     </div>
   );}
-// };<switch> <Route exact path ="/login" component={Login}></switch>}
+
 
 export default Navbar;
