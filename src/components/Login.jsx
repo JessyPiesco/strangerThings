@@ -1,6 +1,8 @@
 import react from "react";
 import { loginUser } from "./api-adapter";
 import Register from "./Register";
+import { NavLink } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 
 
@@ -10,12 +12,13 @@ const Login = (props) => {
         event.preventDefault()
         const username = event.target[0].value
         const password = event.target[1].value
-        const loginUser = await loginUser(username, password)
-        const token = loginUser.token
-        // console.log("here", loggedUser)
+        const logingUser = await loginUser(username, password)
+        const token = logingUser.token
+        console.log("log", logingUser)
+        console.log("here", token)
         localStorage.removeItem('token')
         localStorage.setItem('token', token)
-        // loginUser(username, password)
+        (<Navigate to="/posts" replace={true} />)
     }
 function newUser(){
   return <Register/>
@@ -29,8 +32,9 @@ return(
         <input type="text"  placeholder="UserName" className="username" />
         <input type="password" placeholder="Password" className="username"/>
         <button type="submit" className="button"> SUBMIT </button>
-        <button type="submit" onClick={newUser} className="button">New User </button>
+
     </form>
+    <NavLink to="register" > New User </NavLink>
 </div>
 )
 }

@@ -35,7 +35,7 @@ const Main = () => {
         <Route path="home" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="posts" element={<Posts />} />
-        <Route path="register" element={<Register />} />
+        <Route path="login/register" element={<Register />} />
       </Routes>
     </div>
   );

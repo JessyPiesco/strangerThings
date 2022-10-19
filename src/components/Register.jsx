@@ -7,8 +7,8 @@ async function handleSubmit(event) {
     event.preventDefault()
     const username = event.target[0].value
     const password = event.target[1].value
-    const registerUser = await registerUser(username, password)
-    const token = registerUser.token
+    const registeringUser = await registerUser(username, password)
+    const token = registeringUser.token
     localStorage.removeItem('token')
     localStorage.setItem('token', token)
 
