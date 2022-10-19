@@ -26,7 +26,24 @@ export async function loginUser(username, password) {
             }
         })
     }
-    const response = await fetch(`${BASE_URL}/api/${COHORT}/users/register`, options)
+    const response = await fetch(`${BASE_URL}/api/${COHORT}/users/login`, options)
     const result = await response.json()
     return result.data
+}
+
+export async function registerUser(username, password){
+const options = {
+    method:'Post',
+    headers: {
+        'Content-Type': 'application/json'
+    }, body:  JSON.stringify({
+        user:{
+            username,
+            password
+        }
+    })
+}
+const response = await fetch(`${BASE_URL}/api/${COHORT}/users/register`, options)
+const result = await response.json()
+return result.data
 }

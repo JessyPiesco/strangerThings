@@ -16,8 +16,13 @@ useEffect(()=>{
     {
       posts.length ? posts.map((post)=>{
         return //key goes here in another div
+
+<div key = {author.id}>
           <div>{post.title}</div>
+          </div>
+
       }) : <div> Loading your Posts</div>
+
     }</div>
 
 

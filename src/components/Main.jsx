@@ -8,6 +8,7 @@ import {
 import {Navbar} from "."
 import {Login} from "."
 import {Posts} from "."
+import {Register} from "."
 
 
 const Main = () => {
