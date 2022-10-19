@@ -23,16 +23,10 @@ body {
   width: 40%;
   justify-content: space-around;
   padding-left: 20px;
+  background-color: white;
 }
 
-/* #login{
-  display: flex;
-  justify-content: center;
-  padding: 5%;
-  font-size: 30px;
-  flex-direction: column;
-  align-items: center;
-} */
+
 
 .login{
   display: flex;

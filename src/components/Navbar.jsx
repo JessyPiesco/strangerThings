@@ -1,5 +1,5 @@
 import React from "react";
-import { Router } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   function handleClick(event){
@@ -15,12 +15,12 @@ const Navbar = () => {
       <h2> Stranger Things, Buy and Sell</h2>
 
       <div id="navStuff">
-        <div className="home" onClick={<a href="http://localhost:3000/home"/> }> Home </div>
-        <div className="posts" onClick={<a href="http://localhost:3000/posts"/> }> Posts </div>
-        <div id="login" onClick={<a href="http://localhost:3000/login"/> }> Login </div>
+        <NavLink to ="home" > Home </NavLink>
+        <NavLink to="login" > Login </NavLink>
+        <NavLink to="posts" > Posts </NavLink>
       </div>
     </div>
-  );
-};
+  );}
+// };<switch> <Route exact path ="/login" component={Login}></switch>}
 
 export default Navbar;
