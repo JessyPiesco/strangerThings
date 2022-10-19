@@ -16,7 +16,8 @@ async function handleSubmit(event) {
 
 return(
 <div id="registering">
-<div> SIGN IN </div>
+<div id="signUp"> SIGN UP </div>
+<div>Welcome please create a username and password</div>
 <form id="reg" onSubmit={handleSubmit}>
     <input type="text"  placeholder="UserName" className="username" />
     <input type="password" placeholder="Password" className="username"/>

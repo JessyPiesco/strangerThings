@@ -1,19 +1,23 @@
-import React, {useState, useEffect} from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import {Navbar} from "."
-import {Login} from "."
-import {Posts} from "."
-import {Register} from "."
+import React, { useEffect, useState } from "react";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import { Login, Navbar, Posts, Home, Register } from ".";
 
 
 const Main = () => {
   const [userPosts, setUserPosts]= useState("");
   const [userName, setUserName]= useState("")
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/">
+<Route path="home" element={<Home />} />
+         <Route path="login" element={<Login />} />
+        <Route path="posts" element={<Posts />} />
+        <Route path="register" element={<Register/>}/>
+      </Route>
+    )
+  );
+
   useEffect(()=> {
     async function information(){
       try{
@@ -34,8 +38,8 @@ const Main = () => {
   return (
     <div id="main">
 <Navbar/>
-<Login />
-<Posts/>
+<RouterProvider router={router}></RouterProvider>
+
   </div>
   );
 };
