@@ -24,12 +24,12 @@ function newUser(){
 return(
 
 <div id="LogginON">
-    <div> SIGN IN </div>
-    <form id="login" onSubmit={handleSubmit}>
+    <div className="login"> SIGN IN </div>
+    <form className="login" onSubmit={handleSubmit}>
         <input type="text"  placeholder="UserName" className="username" />
         <input type="password" placeholder="Password" className="username"/>
-        <button type="submit"> SUBMIT </button>
-        <button type="submit" onClick={newUser}>New User </button>
+        <button type="submit" className="button"> SUBMIT </button>
+        <button type="submit" onClick={newUser} className="button">New User </button>
     </form>
 </div>
 )

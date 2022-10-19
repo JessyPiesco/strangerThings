@@ -25,13 +25,27 @@ body {
   padding-left: 20px;
 }
 
-#loggingIn{
+/* #login{
   display: flex;
   justify-content: center;
   padding: 5%;
   font-size: 30px;
   flex-direction: column;
   align-items: center;
+} */
+
+.login{
+  display: flex;
+  justify-content: center;
+  padding: 5%;
+  font-size: 30px;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.button{
+  margin: 5px;
 }
 
 input{
