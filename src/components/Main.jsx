@@ -11,6 +11,7 @@ import { Login, Navbar, Posts, Home, Register } from ".";
 const Main = () => {
   const [userPosts, setUserPosts] = useState([]);
   const [userName, setUserName] = useState("");
+  const [userData, setUserData] = useState();
 
   useEffect(() => {
     async function information() {
@@ -19,7 +20,7 @@ const Main = () => {
           "https://strangers-things.herokuapp.com/api/2209-FTB-ET-WEB-FT/posts"
         );
         const result = await response.json();
-        setUserName(result.data.posts);
+        setUserData(result.data.posts);
         console.log(result.data.posts);
       } catch (err) {
         console.log(loading);
@@ -32,9 +33,9 @@ const Main = () => {
     <div id="main">
       <Navbar />
       <Routes>
-        <Route path="home" element={<Home userName={userName} />} />
+        <Route path="home" element={<Home setUserName={setUserName} />} />
         <Route path="login" element={<Login />} />
-        <Route path="posts" element={<Posts userPosts={userPosts}/>} />
+        <Route path="posts" element={<Posts userPosts={userPosts} />} />
         <Route path="login/register" element={<Register />} />
       </Routes>
     </div>

@@ -4,47 +4,40 @@ import Register from "./Register";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-
-
-
 const Login = (props) => {
-    const navigate = useNavigate()
- 
-    async function handleSubmit(event) {
-        event.preventDefault()
-        const username = event.target[0].value
-        const password = event.target[1].value
-        const logingUser = await loginUser(username, password)
-        const token = logingUser.token
-        localStorage.removeItem('token')
-        localStorage.setItem('token', token);
-        navigate('/home')
-        // <Navigate onSubmit={handlesSubmit} to="home" replace={true} />
-    }
-function newUser(){
-  return <Register />
-}
+  const navigate = useNavigate();
+  const setUserName = props.setUserName;
 
-return(
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const username = event.target[0].value;
+    const password = event.target[1].value;
+    const logingUser = await loginUser(username, password);
+    const token = logingUser.token;
+    localStorage.removeItem("token");
+    localStorage.setItem("token", token);
+    navigate("/home");
+    // <Navigate onSubmit={handlesSubmit} to="home" replace={true} />
+  }
+  function newUser() {
+    return <Register />;
+  }
 
-<div id="LogginON">
-    <div className="login"> SIGN IN </div>
-    <form className="login" onSubmit={handleSubmit}>
-        <input type="text"  placeholder="UserName" className="username" />
-        <input type="password" placeholder="Password" className="username"/>
-        <button type="submit" className="button"> SUBMIT </button>
-    </form>
+  return (
+    <div id="LogginON">
+      <div className="login"> SIGN IN </div>
+      <form className="login" onSubmit={handleSubmit}>
+        <input type="text" placeholder="UserName" className="username" />
+        <input type="password" placeholder="Password" className="username" />
+        <button type="submit" className="button">
+          {" "}
+          SUBMIT{" "}
+        </button>
+      </form>
 
-    <NavLink to="register" > New User </NavLink>
-</div>
-)
-}
-
-
-
-
-
-
-
+      <NavLink to="register"> New User </NavLink>
+    </div>
+  );
+};
 
 export default Login;

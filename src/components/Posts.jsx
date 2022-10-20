@@ -5,45 +5,46 @@ import { creator } from "./api-adapter";
 import SinglePost from "./SinglePost";
 
 const Posts = (props) => {
-  console.log("props", props)
-  const userPosts=props.userPosts
-  const setUserPosts=props.setUserPosts
-const [posts, setAllPosts]= useState([])
-const {id}= useParams()
-useEffect(()=>{
-  async function fetchPosts(){
-    const allPosts = await getPosts()
-    setAllPosts(allPosts)
+  console.log("props", props);
+  const userPosts = props.userPosts;
+  const setUserPosts = props.setUserPosts;
+  const [posts, setAllPosts] = useState([]);
+  const { id } = useParams();
+  useEffect(() => {
+    async function fetchPosts() {
+      const allPosts = await getPosts();
+      setAllPosts(allPosts);
+    }
+    fetchPosts();
+  }, []);
+  function filterPosts() {
+    return posts.filter((post) => {
+      return post._id == id;
+    });
   }
-  fetchPosts()
-},[])
-function filterPosts(){
-  return posts.filter((post)=> {
-    return post._id == id
-  })
-}
 
-
-  return(
-    <div className="box">{`This is your Posts stop`}
-    <div>
-      <button>
-        New Post
-      </button>
+  return (
+    <div className="box">
+      {`This is your Posts stop`}
+      <div>
+          <input id='title' type="text" placeholder="Make your title..." />
+          <input id='description' type="text" placeholder="what's your post?"/>
+          <input type="text" />
+          <input type="text" />
+          <input type="text" />
+        <button>New Post</button>
+      </div>
+      {id ? (
+        <Outlet context={filterPosts()} />
+      ) : posts.length ? (
+        posts.map((post) => {
+          return <SinglePost key={`post-id-${post._id}`} post={post} />;
+        })
+      ) : (
+        <div> Loading your Posts</div>
+      )}
     </div>
-    {id ? <Outlet context={filterPosts()} /> :
+  );
+};
 
-      posts.length ? posts.map((post)=>{
-        return <SinglePost key = {`post-id-${post._id}`} post ={post} />
-
-      }) : <div> Loading your Posts</div>
-
-    }</div>
-
-
-  )
-}
-
-
-
-export default Posts
+export default Posts;
