@@ -9,7 +9,7 @@ import {
 import { Login, Navbar, Posts, Home, Register } from ".";
 
 const Main = () => {
-  const [userPosts, setUserPosts] = useState("");
+  const [userPosts, setUserPosts] = useState([]);
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
@@ -32,9 +32,9 @@ const Main = () => {
     <div id="main">
       <Navbar />
       <Routes>
-        <Route path="home" element={<Home />} />
+        <Route path="home" element={<Home userName={userName} />} />
         <Route path="login" element={<Login />} />
-        <Route path="posts" element={<Posts />} />
+        <Route path="posts" element={<Posts userPosts={userPosts}/>} />
         <Route path="login/register" element={<Register />} />
       </Routes>
     </div>
