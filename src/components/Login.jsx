@@ -16,15 +16,13 @@ const Login = (props) => {
         const password = event.target[1].value
         const logingUser = await loginUser(username, password)
         const token = logingUser.token
-        console.log("log", logingUser)
-        console.log("here", token)
         localStorage.removeItem('token')
         localStorage.setItem('token', token);
         navigate('/home')
         // <Navigate onSubmit={handlesSubmit} to="home" replace={true} />
     }
 function newUser(){
-  return <Register/>
+  return <Register />
 }
 
 return(

@@ -53,3 +53,10 @@ body {
 input{
   margin: 5px;
 }
+
+.box .singlepostBox{
+  border: solid black 2px;
+  background-color: rgb(130, 167, 196);
+  margin-bottom: 12px;
+  max-width: 60%;
+}
