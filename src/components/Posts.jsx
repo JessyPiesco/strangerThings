@@ -25,15 +25,13 @@ const Posts = (props) => {
 
   return (
     <div className="box">
-      {`This is your Posts stop`}
-      <div>
-          <input id='title' type="text" placeholder="Make your title..." />
-          <input id='description' type="text" placeholder="what's your post?"/>
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
+      <h2>Create a Post</h2>
+      <div id='createPost'>
+        <input id="title" type="text" placeholder="Title" />
+        <input id="description" type="text" placeholder="Description..." />
         <button>New Post</button>
       </div>
+
       {id ? (
         <Outlet context={filterPosts()} />
       ) : posts.length ? (

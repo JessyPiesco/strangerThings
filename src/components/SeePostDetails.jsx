@@ -40,7 +40,7 @@ const SeeDetails = (props) => {
     }
     async function handleSubmit(e) {
         e.preventDefault()
-        console.log('submitted')
+        console.log(handleSubmit)
         const updatedPost = await updatePost(formDetails, post._id, localStorage.getItem('token'))
         console.log(updatedPost)
     }
@@ -75,4 +75,4 @@ const SeeDetails = (props) => {
   );
 };
 
-export default PostDetails;
+export default SeeDetails;

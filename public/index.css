@@ -46,8 +46,8 @@ body {
 }
 
 
-.button{
-  margin: 5px;
+button{
+  margin-left: 5px;
 }
 
 input{
@@ -60,4 +60,14 @@ input{
   margin-bottom: 12px;
   max-width: 60%;
   margin: 10px;
+}
+
+#createPost{
+  display: flex;
+  flex-direction: column;
+  max-width: 60%;
+}
+
+#description{
+  padding-bottom: 50px;
 }
