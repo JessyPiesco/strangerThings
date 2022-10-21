@@ -6,7 +6,7 @@ import {
   Routes,
   RouterProvider,
 } from "react-router-dom";
-import { Login, Navbar, Posts, Home, Register } from ".";
+import { Login, Navbar, Posts, Home, Register, SinglePost} from ".";
 
 const Main = () => {
   const [userPosts, setUserPosts] = useState([]);
@@ -36,7 +36,7 @@ const Main = () => {
         <Route path="home" element={<Home setUserName={setUserName} />} />
         <Route path="login" element={<Login />} />
         <Route path="posts" element={<Posts userPosts={userPosts} />} />
-        <Route path="login/register" element={<Register />} />
+        <Route path="login/register" element={<Register userName={userName} />} />
       </Routes>
     </div>
   );

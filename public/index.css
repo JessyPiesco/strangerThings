@@ -65,7 +65,12 @@ input{
 #createPost{
   display: flex;
   flex-direction: column;
-  max-width: 60%;
+  max-width: 30%;
+}
+h2{
+  display: flex;
+  flex-direction: column;
+
 }
 
 #description{

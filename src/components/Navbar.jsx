@@ -16,7 +16,7 @@ const Navbar = () => {
       <div id="navStuff">
         <NavLink to="home"> Home </NavLink>
         <NavLink to="login"> Login </NavLink>
-        <NavLink to="posts"> Posts </NavLink>
+        <NavLink to="posts"> My Posts </NavLink>
       </div>
     </div>
   );

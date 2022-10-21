@@ -23,14 +23,15 @@ const Posts = (props) => {
     });
   }
 
+
   return (
     <div className="box">
       <h2>Create a Post</h2>
-      <div id='createPost'>
+      <form  id='createPost'>
         <input id="title" type="text" placeholder="Title" />
         <input id="description" type="text" placeholder="Description..." />
-        <button>New Post</button>
-      </div>
+        <button> New Post</button>
+      </form>
 
       {id ? (
         <Outlet context={filterPosts()} />

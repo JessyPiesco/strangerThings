@@ -17,7 +17,6 @@ const Login = (props) => {
     localStorage.removeItem("token");
     localStorage.setItem("token", token);
     navigate("/home");
-    // <Navigate onSubmit={handlesSubmit} to="home" replace={true} />
   }
   function newUser() {
     return <Register />;
