@@ -58,10 +58,9 @@ export async function registerUser(username, password) {
   return result.data;
 }
 
-export async function creator(userPosts, setUserPosts) {
-  const [title, setTitle] = useState([]);
-  const [body, setBody] = useState([]);
+export async function creator(title, description, price, location, willDeliver) {
 
+//problem
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await fetch(`${BASE_URL}/api/${COHORT}/users/posts`, {
@@ -72,11 +71,14 @@ export async function creator(userPosts, setUserPosts) {
       },
       body: JSON.stringify({
         title,
-        body,
+        description,
+        price,
+        location,
+        willDeliver
       }),
     });
-    const data = await response.json();
-    setUserPosts([data, ...userPosts]);
+    const result = await response.json();
+    return result;
   };
 }
 
