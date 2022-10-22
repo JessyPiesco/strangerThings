@@ -9,10 +9,7 @@ const SinglePost = (props) => {
       <div>{post.description}</div>
       <div>{post.price}</div>
       <div>{post.location}</div>
-      <Link to={`/posts/details/${post._id}`}>
-
-        <button> See Details </button>
-      </Link>
+      <Link to={`/posts/${post._id}`}><button>Post Details</button></Link>
     </div>
   );
 };

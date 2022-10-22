@@ -54,7 +54,7 @@ const SeePostDetails = (props) => {
           <div>{post.price} </div>
           <div>{post.location} </div>
           <label htmlFor="will-deliver">Will Deliver</label>
-          <Link to={"/posts"}>
+          <Link to={'/posts'}>
             <button>Go Back</button>
           </Link>
               </div>

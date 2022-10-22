@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { getPosts } from "./api-adapter";
 import { Outlet, useParams } from "react-router-dom";
-import { creator, filterPosts} from "./api-adapter";
+import { creator } from "./api-adapter";
 import SinglePost from "./SinglePost";
 
 const Posts = (props) => {
-const [posts, setPosts]= useState("")
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -15,33 +14,31 @@ const [posts, setPosts]= useState("")
   console.log("props", props);
   const userPosts = props.userPosts;
   const setUserPosts = props.setUserPosts;
-  // const posts=props.posts;
-
+  const [posts, setAllPosts] = useState([]);
   const { id } = useParams();
   useEffect(() => {
     async function fetchPosts() {
       const allPosts = await getPosts();
-      setPosts(allPosts);
+      setAllPosts(allPosts);
     }
     fetchPosts();
   }, []);
-  function filterPosts(id) {
+  function filterPosts() {
     return posts.filter((post) => {
       return post._id == id;
     });
   }
-  async function makeNewPost(event) {
-    event.preventDefault();
-    const token = localStorage.getItem("token");
-    console.log(token)
-    const addPost =await creator(
-      token,
-      title,
-      description,
-      price,
-      willDeliver
-    );
-    console.log(addPost)
+  async function makeNewPost() {
+    try { 
+      const newPost = await creator(
+        title,
+        description,
+        price,
+        location,
+        willDeliver
+      );
+      console.log(newPost);
+    } catch (error) {}
   }
 
   // const handleSubmit = async (event) => {
@@ -109,7 +106,7 @@ const [posts, setPosts]= useState("")
         <Outlet context={filterPosts()} />
       ) : posts.length ? (
         posts.map((post) => {
-          return <SinglePost key={`post-id-${post._id}`} post={post}  />;
+          return <SinglePost key={`post-id-${post._id}`} post={post} />;
         })
       ) : (
         <div> Loading your Posts</div>

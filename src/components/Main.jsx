@@ -37,7 +37,7 @@ const Main = () => {
     setLoggedInUser(user);
     setLoggedIn(true);
   }
-  function filterPosts() {
+  function filterPosts(id) {
     return posts.filter((post) => {
       return post._id == id;
     });
@@ -51,8 +51,8 @@ const Main = () => {
         <Route path="home" element={<Home loggedInUser={loggedInUser} />} />
         <Route path="login" element={<Login />} />
         <Route path="posts" element={<Posts posts={posts} filterPost = {filterPosts} userPosts={userPosts} />} />
-        <Route path="singlePost" element={<SinglePost/>}/>
-        <Route path="post/details/:id" element={<SeePostDetails filterPost = {filterPosts}/>}/>
+        <Route path="singlePost" element={<SinglePost />}/>
+        <Route path=":id"  element={<SeePostDetails filterPosts={filterPosts}/>} />
         <Route path="login/register" element={<Register userName={userName} />} />
       </Routes>
     </div>

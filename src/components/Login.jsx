@@ -19,8 +19,8 @@ const Login = (props) => {
     localStorage.removeItem("token");
     localStorage.setItem("token", token);
     localStorage.removeItem("username");
-    localStorage.setItem("username", username )
-    props.getM
+    localStorage.setItem("username", username );
+    setUserName(userName)
     navigate("/home");
   }
   function newUser() {
