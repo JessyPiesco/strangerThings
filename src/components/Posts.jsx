@@ -28,17 +28,18 @@ const Posts = (props) => {
       return post._id == id;
     });
   }
-  async function makeNewPost() {
-    try {
-      const newPost = await creator(
-        title,
-        description,
-        price,
-        location,
-        willDeliver
-      );
-      console.log(newPost);
-    } catch (error) {}
+  async function makeNewPost(event) {
+    // event.preventDefault();
+    const token = localStorage.getItem("token");
+    console.log(token)
+    const addPost =await creator(
+      token,
+      title,
+      description,
+      price,
+      willDeliver
+    );
+    console.log(addPost)
   }
 
   // const handleSubmit = async (event) => {

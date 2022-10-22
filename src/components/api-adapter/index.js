@@ -60,37 +60,28 @@ export async function registerUser(username, password) {
   return result.data;
 }
 
-export async function creator(title, description, price, location, willDeliver) {
-  const response = await fetch(`${BASE_URL}/api/${COHORT}/users/posts`, {
-    method: "POST",
-    headers: {
-      "Content-type": "Application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-      post: {
-      title,
-      description,
-      price,
-      location,
-      willDeliver,
+export async function creator(token, title, description, price, location, willDeliver) {
+    const response = await fetch(`${BASE_URL}/api/${COHORT}/users/posts`, {
+      method: "POST",
+      headers: {
+        "Content-type": "Application/json",
+        Authorization: `Bearer ${token}`,
       },
-    }),
+      body: JSON.stringify({
+        post: {
+        title,
+        description,
+        price,
+        location,
+        willDeliver,
+        },
+      }),
+    }
+    );
+    const result = await response.json();
+    console.log(result)
+    return result.data;
   }
-  );
-  const result = await response.json();
-  console.log(result)
-  return result.data;
-}
-  
-
-//     });
-//     const data = await response.json();
-//     console.log("data", data)
-//     return data
-//   };const newPost =[response.data]
-//   return newPost
-// }
 
 export async function updatePost(post, id, token) {
   const options = {
