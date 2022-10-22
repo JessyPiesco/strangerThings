@@ -1,4 +1,4 @@
-import react from "react";
+import React, {useState} from "react";
 import { loginUser } from "./api-adapter";
 import Register from "./Register";
 import { NavLink } from "react-router-dom";
@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const navigate = useNavigate();
-  const setUserName = props.setUserName;
+  const [userName, setUserName] = useState([]);
+  const [password, setPassword] = useState([]);
+  // const setUserName = props.setUserName;
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -16,6 +18,9 @@ const Login = (props) => {
     const token = logingUser.token;
     localStorage.removeItem("token");
     localStorage.setItem("token", token);
+    localStorage.removeItem("username");
+    localStorage.setItem("username", username )
+    props.getM
     navigate("/home");
   }
   function newUser() {

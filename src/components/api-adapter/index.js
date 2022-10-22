@@ -61,26 +61,29 @@ export async function registerUser(username, password) {
 }
 
 export async function creator(title, description, price, location, willDeliver) {
-
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const response = await fetch(`${BASE_URL}/api/${COHORT}/users/posts`, {
-      method: "POST",
-      headers: {
-        "Content-type": "Application/json",
-        Authorization: `Bearer ${token}`,
+  const response = await fetch(`${BASE_URL}/api/${COHORT}/users/posts`, {
+    method: "POST",
+    headers: {
+      "Content-type": "Application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      post: {
+      title,
+      description,
+      price,
+      location,
+      willDeliver,
       },
-      body: JSON.stringify({
-        title,
-        description,
-        price,
-        location,
-        willDeliver
-      })}).then(()=>{
-        console.log(response)
-        console.log('new post added')
-      })}};
+    }),
+  }
+  );
+  const result = await response.json();
+  console.log(result)
+  return result.data;
+}
+  
+
 //     });
 //     const data = await response.json();
 //     console.log("data", data)

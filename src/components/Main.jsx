@@ -10,6 +10,8 @@ import { Login, Navbar, Posts, Home, Register, SinglePost} from ".";
 
 const Main = () => {
   const [userPosts, setUserPosts] = useState([]);
+  const [loggedInUser, setLoggedInUser] = useState({});
+  const [loggedIn, setLoggedIn] =useState(false)
   const [userName, setUserName] = useState("");
   const [userData, setUserData] = useState();
 
@@ -28,6 +30,13 @@ const Main = () => {
     }
     information();
   }, []);
+
+  const getLoggedInUser = async () => {
+    const user = await getLoggedInUser(localStorage.getItem("token"));
+    setLoggedInUser(user);
+    setLoggedIn(true);
+  }
+
 
   return (
     <div id="main">

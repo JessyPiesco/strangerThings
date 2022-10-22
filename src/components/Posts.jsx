@@ -30,10 +30,28 @@ const Posts = (props) => {
   }
   async function makeNewPost() {
     try {
-      const newPost = await creator(title, description, price, location, willDeliver);
+      const newPost = await creator(
+        title,
+        description,
+        price,
+        location,
+        willDeliver
+      );
       console.log(newPost);
     } catch (error) {}
   }
+
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   const token =localStorage.getItem("token");
+  //   const addPost = await creator(
+  //     token,
+  //     title,
+  //     description,
+  //     price,
+  //     willDeliver,
+  //   );
+  // }
 
   return (
     <div className="box">
@@ -63,7 +81,7 @@ const Posts = (props) => {
           }}
           placeholder="Description..."
         />
-         <input
+        <input
           id="price"
           type="text"
           value={price}
@@ -72,7 +90,7 @@ const Posts = (props) => {
           }}
           placeholder="price..."
         />
-         <input
+        <input
           id="location"
           type="text"
           value={location}
@@ -81,7 +99,7 @@ const Posts = (props) => {
           }}
           placeholder="location..."
         />
-        <button type="submit"> New Post</button>
+        <button onSubmit={makeNewPost} type="submit"> New Post</button>
       </form>
 
       {id ? (
