@@ -3,6 +3,8 @@ import { useState } from "react";
 const BASE_URL = "https://strangers-things.herokuapp.com";
 const COHORT = "2209-FTB-ET-WEB-FT";
 
+
+
 export async function getUser() {
   const response = await fetch(`${BASE_URL}/api/${COHORT}/users/me`);
   const result = await response.json();
@@ -60,7 +62,7 @@ export async function registerUser(username, password) {
 
 export async function creator(title, description, price, location, willDeliver) {
 
-//problem
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await fetch(`${BASE_URL}/api/${COHORT}/users/posts`, {
@@ -75,12 +77,17 @@ export async function creator(title, description, price, location, willDeliver) 
         price,
         location,
         willDeliver
-      }),
-    });
-    const result = await response.json();
-    return result;
-  };
-}
+      })}).then(()=>{
+        console.log(response)
+        console.log('new post added')
+      })}};
+//     });
+//     const data = await response.json();
+//     console.log("data", data)
+//     return data
+//   };const newPost =[response.data]
+//   return newPost
+// }
 
 export async function updatePost(post, id, token) {
   const options = {
