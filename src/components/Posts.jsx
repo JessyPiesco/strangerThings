@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { getPosts } from "./api-adapter";
 import { Outlet, useParams } from "react-router-dom";
-import { creator } from "./api-adapter";
+import { creator, filterPosts} from "./api-adapter";
 import SinglePost from "./SinglePost";
 
 const Posts = (props) => {
+const [posts, setPosts]= useState("")
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -14,22 +15,23 @@ const Posts = (props) => {
   console.log("props", props);
   const userPosts = props.userPosts;
   const setUserPosts = props.setUserPosts;
-  const [posts, setAllPosts] = useState([]);
+  // const posts=props.posts;
+
   const { id } = useParams();
   useEffect(() => {
     async function fetchPosts() {
       const allPosts = await getPosts();
-      setAllPosts(allPosts);
+      setPosts(allPosts);
     }
     fetchPosts();
   }, []);
-  function filterPosts() {
+  function filterPosts(id) {
     return posts.filter((post) => {
       return post._id == id;
     });
   }
   async function makeNewPost(event) {
-    // event.preventDefault();
+    event.preventDefault();
     const token = localStorage.getItem("token");
     console.log(token)
     const addPost =await creator(
@@ -107,7 +109,7 @@ const Posts = (props) => {
         <Outlet context={filterPosts()} />
       ) : posts.length ? (
         posts.map((post) => {
-          return <SinglePost key={`post-id-${post._id}`} post={post} />;
+          return <SinglePost key={`post-id-${post._id}`} post={post}  />;
         })
       ) : (
         <div> Loading your Posts</div>

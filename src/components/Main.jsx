@@ -6,7 +6,7 @@ import {
   Routes,
   RouterProvider,
 } from "react-router-dom";
-import { Login, Navbar, Posts, Home, Register, SinglePost} from ".";
+import { Login, Navbar, Posts, Home, Register, SeePostDetails, SinglePost} from ".";
 
 const Main = () => {
   const [userPosts, setUserPosts] = useState([]);
@@ -14,6 +14,7 @@ const Main = () => {
   const [loggedIn, setLoggedIn] =useState(false)
   const [userName, setUserName] = useState("");
   const [userData, setUserData] = useState();
+  const [posts, setAllPosts] = useState([]);
 
   useEffect(() => {
     async function information() {
@@ -36,15 +37,22 @@ const Main = () => {
     setLoggedInUser(user);
     setLoggedIn(true);
   }
+  function filterPosts() {
+    return posts.filter((post) => {
+      return post._id == id;
+    });
+  }
 
 
   return (
     <div id="main">
       <Navbar />
       <Routes>
-        <Route path="home" element={<Home setUserName={setUserName} />} />
+        <Route path="home" element={<Home loggedInUser={loggedInUser} />} />
         <Route path="login" element={<Login />} />
-        <Route path="posts" element={<Posts userPosts={userPosts} />} />
+        <Route path="posts" element={<Posts posts={posts} filterPost = {filterPosts} userPosts={userPosts} />} />
+        <Route path="singlePost" element={<SinglePost/>}/>
+        <Route path="post/details/:id" element={<SeePostDetails filterPost = {filterPosts}/>}/>
         <Route path="login/register" element={<Register userName={userName} />} />
       </Routes>
     </div>

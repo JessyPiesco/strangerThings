@@ -61,7 +61,7 @@ export async function registerUser(username, password) {
 }
 
 export async function creator(token, title, description, price, location, willDeliver) {
-    const response = await fetch(`${BASE_URL}/api/${COHORT}/users/posts`, {
+    const response = await fetch(`${BASE_URL}/api/${COHORT}/posts`, {
       method: "POST",
       headers: {
         "Content-type": "Application/json",

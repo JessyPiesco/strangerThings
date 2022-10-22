@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useOutletContext, Link } from "react-router-dom";
 import { creator } from "./api-adapter";
 import { updatePost, deletePost } from "./api-adapter";
 
-const SeeDetails = (props) => {
+const SeePostDetails = (props) => {
     const context = useOutletContext();
     const post = context[0];
     const [formDetails, setFormDetails] = useState({
@@ -22,7 +22,7 @@ const SeeDetails = (props) => {
                 price: post.price,
                 location: post.location,
             }): null
-    
+
     },[post])
     function handleChange(e){
         e.preventDefault()
@@ -31,13 +31,14 @@ const SeeDetails = (props) => {
         const updatedForm = {...formDetails, [toUpdate]: update}
         setFormDetails(updatedForm)
     }
-    async function handleDelete(e) {
-        e.preventDefault()
-        const toDelete = e.target.id
-        const token = localStorage.getItem('token')
-        const deleted = await deletePost(toDelete, token)
-        console.log(deleted)
-    }
+    // async function handleDelete(e) {
+    //     e.preventDefault()
+    //     const toDelete = e.target.id
+    //     const token = localStorage.getItem('token')
+    //     const deleted = await deletePost(toDelete, token)
+    //     console.log(deleted)
+    // }
+
     async function handleSubmit(e) {
         e.preventDefault()
         console.log(handleSubmit)
@@ -75,4 +76,4 @@ const SeeDetails = (props) => {
   );
 };
 
-export default SeeDetails;
+export default SeePostDetails;
