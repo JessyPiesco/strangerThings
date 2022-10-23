@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useOutletContext, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { creator } from "./api-adapter";
 import { updatePost, deletePost } from "./api-adapter";
 
 const SeePostDetails = (props) => {
-    const context = useOutletContext();
-    const post = context[0];
+  const { id } =useParams();
+  const post = props.filterPosts(id)[0]
+  const navigate = useNavigate();
+console.log(post)
     const [formDetails, setFormDetails] = useState({
         title: '',
         description:'',
@@ -24,6 +26,7 @@ const SeePostDetails = (props) => {
             }): null
 
     },[post])
+
     function handleChange(e){
         e.preventDefault()
         const toUpdate = e.target.id
@@ -31,13 +34,16 @@ const SeePostDetails = (props) => {
         const updatedForm = {...formDetails, [toUpdate]: update}
         setFormDetails(updatedForm)
     }
-    // async function handleDelete(e) {
-    //     e.preventDefault()
-    //     const toDelete = e.target.id
-    //     const token = localStorage.getItem('token')
-    //     const deleted = await deletePost(toDelete, token)
-    //     console.log(deleted)
-    // }
+    async function handleDelete(e) {
+        e.preventDefault()
+        const toDelete = e.target.id
+        const token = localStorage.getItem('token')
+        const deleted = await deletePost(toDelete, token)
+        if(deleted.success){
+          navigate("/posts")
+        }
+        console.log(deleted)
+    }
 
     async function handleSubmit(e) {
         e.preventDefault()

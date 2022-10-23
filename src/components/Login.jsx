@@ -16,11 +16,13 @@ const Login = (props) => {
     const password = event.target[1].value;
     const logingUser = await loginUser(username, password);
     const token = logingUser.token;
-    localStorage.removeItem("token");
+    // localStorage.removeItem("token");
     localStorage.setItem("token", token);
-    localStorage.removeItem("username");
-    localStorage.setItem("username", username );
-    setUserName(userName)
+    // localStorage.removeItem("username");
+    // localStorage.setItem("username", username );
+   setUserName(userName)
+    props.getLoggedInUser()
+
     navigate("/home");
   }
   function newUser() {

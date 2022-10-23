@@ -11,25 +11,19 @@ const Posts = (props) => {
   const [location, setLocation] = useState("");
   const [willDeliver, setWillDeliver] = useState(true);
 
-  console.log("props", props);
-  const userPosts = props.userPosts;
+  const posts = props.posts;
   const setUserPosts = props.setUserPosts;
-  const [posts, setAllPosts] = useState([]);
+
+  // const [posts, setAllPosts] = useState([]);
   const { id } = useParams();
-  useEffect(() => {
-    async function fetchPosts() {
-      const allPosts = await getPosts();
-      setAllPosts(allPosts);
-    }
-    fetchPosts();
-  }, []);
+
   function filterPosts() {
     return posts.filter((post) => {
       return post._id == id;
     });
   }
   async function makeNewPost() {
-    try { 
+    try {
       const newPost = await creator(
         title,
         description,
@@ -102,11 +96,9 @@ const Posts = (props) => {
         <button onSubmit={makeNewPost} type="submit"> New Post</button>
       </form>
 
-      {id ? (
-        <Outlet context={filterPosts()} />
-      ) : posts.length ? (
+    {posts.length ?  (
         posts.map((post) => {
-          return <SinglePost key={`post-id-${post._id}`} post={post} />;
+          return <SinglePost key={`post-id-${post._id}`} filterPosts={filterPosts} post={post} />;
         })
       ) : (
         <div> Loading your Posts</div>
