@@ -10,6 +10,7 @@ const SinglePost = (props) => {
       <div>{post.price}</div>
       <div>{post.location}</div>
       <Link to={`/posts/${post._id}`}><button>Post Details</button></Link>
+      <input type="text" placeholder="Message..(we tried)"  />
     </div>
   );
 };

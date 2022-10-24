@@ -1,10 +1,22 @@
 import React from "react";
 import Login from "./Login";
+import { deleteMessages } from "./api-adapter";
 
 const Home = (props) => {
   const loggedInUser = props.loggedInUser;
   const yourMessages = props.loggedInUser.messages
   const username = props.loggedInUser.username
+
+  async function handleDelete(e) {
+    e.preventDefault()
+    const toDelete = e.target.value
+    const token = localStorage.getItem('token')
+    const deleted = await deleteMessages(toDelete, token)
+    if(deleted.success){
+      navigate("/home")
+    }
+    console.log('We TRIED', toDelete)
+}
 
   return (
     <div id="Home">
@@ -18,7 +30,10 @@ const Home = (props) => {
            <div key={`message${msg._id}`}>
             <div>Message- {msg.content}</div>
             <div>From- {msg.fromUser.username}</div>
-            <div></div>
+            <div>
+              <button> REPLY </button>
+              <button onClick={(e) => { handleDelete(e) }}> DELETE MESSAGE</button>
+            </div>
             </div>
             );
           }):
