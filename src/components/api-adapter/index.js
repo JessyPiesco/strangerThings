@@ -123,14 +123,20 @@ export async function deletePost(id, token) {
     const result = await response.json()
     return result}
 
-    export async function deleteMessages(id, token) {
-      const options = {
-          method: 'DELETE',
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
-          }
-      }
-      const response = await fetch(`${BASE_URL}/api/${COHORT}/posts/${token}/messages`, options)
-      const result = await response.json()
-      return result}   
+   export async function sendMessage(content, token, id){
+    fetch(`${BASE_URL}/api/${COHORT}/posts/${id}/messages`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        message: {
+          content: content
+        }
+      })
+    }).then(response => response.json())
+      .then(result => {
+        console.log(result);
+      })
+      .catch(console.error);}
